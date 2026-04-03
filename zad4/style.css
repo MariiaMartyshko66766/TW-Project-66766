@@ -1,0 +1,30 @@
+
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 20px;
+}
+
+.green-theme {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.red-theme {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.hidden {
+    display: none;
+}
