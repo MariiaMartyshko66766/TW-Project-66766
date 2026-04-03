@@ -100,4 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("66766 API Error:", err);
             apiDataDiv.innerHTML = "<p>Nie udało się pobrać danych z zewnętrznego serwera.</p>";
         });
-});
+});    // localStorage check
