@@ -2,6 +2,12 @@ console.log("66766: Skrypt podłączony poprawnie!");
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    const savedTheme = localStorage.getItem('selected-theme');
+    if (savedTheme) {
+        document.body.className = savedTheme;
+        console.log("66766: Przywrócono motyw z pamięci: " + savedTheme);
+    }
+
     const themeBtn = document.getElementById('theme-btn');
     const toggleBtn = document.getElementById('toggle-section-btn');
     const projectsSection = document.getElementById('projects-section');
@@ -10,13 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
         themeBtn.onclick = () => {
             document.body.classList.toggle('red-theme');
             document.body.classList.toggle('green-theme');
-            console.log("66766: Motyw zmieniony");
+            
+            const currentTheme = document.body.className;
+            localStorage.setItem('selected-theme', currentTheme);
+            
+            console.log("66766: Motyw zmieniony i zapisany: " + currentTheme);
         };
     }
 
     if (toggleBtn) {
         toggleBtn.onclick = () => {
             projectsSection.classList.toggle('hidden');
+            console.log("66766: Przełączono widoczność sekcji");
         };
     }
 
@@ -30,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
-
-            console.log("66766: Próba wysłania formy:", { name, email });
 
             if (!name || !email || !message) {
                 errorMsg.textContent = "Błąd: Wypełnij wszystkie pola! (66766)";
