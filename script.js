@@ -79,4 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("66766 Error:", err);
             skillsList.innerHTML = "<li>Nie udało się załadować umiejętności.</li>";
         });
+    const apiDataDiv = document.getElementById('api-data');
+
+    fetch('https://jsonplaceholder.typicode.com/todos/1') 
+        .then(response => {
+            if (!response.ok) throw new Error("Błąd API zewnętrznego");
+            return response.json();
+        })
+        .then(item => {
+            console.log("66766: Dane z zewnętrznego API otrzymane:", item);
+            apiDataDiv.innerHTML = `
+                <div style="border: 1px dashed #ccc; padding: 10px; margin-top: 10px;">
+                    <p><strong>Zadanie z serwera:</strong> ${item.title}</p>
+                    <p><strong>Status:</strong> ${item.completed ? "Zakończone ✅" : "W trakcie ⏳"}</p>
+                    <small>Dane pobrane dla indeksu: 66766</small>
+                </div>
+            `;
+        })
+        .catch(err => {
+            console.error("66766 API Error:", err);
+            apiDataDiv.innerHTML = "<p>Nie udało się pobrać danych z zewnętrznego serwera.</p>";
+        });
 });
